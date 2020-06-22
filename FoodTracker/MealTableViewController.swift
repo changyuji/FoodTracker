@@ -171,8 +171,10 @@ class MealTableViewController: UITableViewController {
     private func loadMeals() -> [Meal]?  {
         
         if let data = try? Data(contentsOf: Meal.ArchiveURL) {
-            if let b = try? (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Meal])!
-            {return  b }
+            if let mealsData = try? (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Meal])!
+            {
+                return  mealsData
+            }
         }
         return nil
 }
